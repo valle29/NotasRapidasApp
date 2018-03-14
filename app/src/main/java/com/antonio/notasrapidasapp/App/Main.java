@@ -16,6 +16,7 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.abhijith.listview_snapshot.ListViewSnapshot;
 import com.antonio.notasrapidasapp.Adapter.NotesAdapter;
 import com.antonio.notasrapidasapp.R;
 
@@ -27,7 +28,6 @@ public class Main extends AppCompatActivity {
     private TextView txtNumNotas;
     private int N_Notas;
     private ListView listNotas;
-    ArrayList<NotesAdapter> notesArray = new ArrayList<NotesAdapter>();
     private AdaptadorNotas adaptadorNotas;
 
     @Override
@@ -42,11 +42,9 @@ public class Main extends AppCompatActivity {
         txtNumNotas = (TextView) findViewById(R.id.txtNumNotas);
         txtNumNotas.setText("Usted tiene "+N_Notas+" notas");
 
-        listNotas = (ListView) findViewById(R.id.listNotas);
+        ArrayList<NotesAdapter> notesArray = new ArrayList<NotesAdapter>();
+
         adaptadorNotas = new AdaptadorNotas(getApplicationContext(),R.layout.row_notas,notesArray);
-        listNotas = (ListView) findViewById(R.id.listNotas);
-        listNotas.setItemsCanFocus(false);
-        listNotas.setAdapter(adaptadorNotas);
 
         notesArray.add(new NotesAdapter("Mi primer nota"));
         notesArray.add(new NotesAdapter("Mi segunda nota"));
@@ -66,6 +64,11 @@ public class Main extends AppCompatActivity {
         notesArray.add(new NotesAdapter("Mi cuarta nota"));
         notesArray.add(new NotesAdapter("Mi quinta nota"));
         notesArray.add(new NotesAdapter("Mi sexta nota"));
+
+        listNotas = (ListView) findViewById(R.id.listNotas);
+        listNotas = (ListView) findViewById(R.id.listNotas);
+        listNotas.setItemsCanFocus(false);
+        listNotas.setAdapter(adaptadorNotas);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
